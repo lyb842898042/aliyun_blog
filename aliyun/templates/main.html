@@ -1,0 +1,22 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+
+{% block title %}
+    首页
+{% endblock %}
+
+{% block style %}
+    <style>
+        body {
+            background-image: url("{% static 'static/img/ganglian.jpg' %}");
+            background-size: 100%;
+        }
+    </style>
+{% endblock %}
+
+{% block center %}
+    <div class=" navbar-btn text-center">
+        <h1>黎裕斌的私人博客</h1>
+        <p>欢迎访问，正在开发中。。。。。。</p>
+    </div>
+{% endblock %}

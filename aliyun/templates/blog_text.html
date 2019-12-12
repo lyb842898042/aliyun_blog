@@ -1,0 +1,35 @@
+{% extends 'index.html' %}
+
+{% block title %}
+    Blog
+{% endblock %}
+
+{% block style %}
+
+{% endblock %}
+
+
+
+{% block center %}
+    <textarea name="" id="" cols="30" rows="10"></textarea>
+    <sapn>您还可以输入<strong style="color:red">140</strong>个字</sapn>
+{% endblock %}
+
+
+{% block scripts %}
+<script>
+    //给文本域响应键盘按下事件
+    $('textarea').keyup(function(){
+        var maxLength = 140;
+        var len = $(this).val().length;
+        $('strong').text(maxLength-len);
+        //判断输入是否超过140个数
+        if(parseInt($('strong').text()) < 0){
+            $('strong').text(0);
+            //截取前140个字符并重新塞到文本域中
+            var content = $(this).val().substring(0,140);
+            $(this).val(content);
+        }
+    });
+</script>
+{% endblock %}

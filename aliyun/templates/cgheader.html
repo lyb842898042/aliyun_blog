@@ -1,0 +1,23 @@
+{% extends 'change_msg.html' %}
+{% load staticfiles %}
+
+{% block center %}
+
+    <form action="/cgheader/" method="post" enctype="multipart/form-data">
+        <div class="list-group col-xs-2">
+            <a href="/cgmsg/" class="list-group-item">个人信息</a>
+            <a href="/cgpwd/" class="list-group-item">密码修改</a>
+            <a href="#" class="list-group-item">头像修改</a>
+        </div>
+
+        <div class="jumbotron col-xs-3 center-block text-center">
+            <div class="form-group">
+                <label for="exampleInputFile"><img src="{% static user.u_header %}" height="80px" width="80px"></label>
+                <input type="file" name="header" class="width ">
+            </div>
+            <button type="submit" id="myButton" class="btn btn-primary">确定</button>
+        </div>
+
+    </form>
+{% endblock %}
+

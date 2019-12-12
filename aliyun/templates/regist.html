@@ -1,0 +1,116 @@
+{% extends 'home.html' %}
+{% load staticfiles %}
+
+{% block title %}
+    注册
+{% endblock %}
+{% block style %}
+    <style>
+        .center-block {
+            display: block;
+            margin-left: 37%;
+            margin-right: auto;
+        }
+
+    </style>
+
+
+{% endblock %}
+
+
+{% block center %}
+    <div class="page-header">
+        <h1>注册</h1>
+    </div>
+
+    {#        <div class="jumbotron ">#}
+    {#            <form action="/regist/" method="post" enctype="multipart/form-data">#}
+    {#                uid#}
+    {#                uname#}
+    {#                sex#}
+    {#                header#}
+    {#                pwd#}
+    {#                qq#}
+    {#                email#}
+    {#                <div class="panel panel-default">#}
+    {#                    <div class="panel-body  text-center">#}
+    {#                        账号：<input type="text" name="uid">#}
+    {#                    </div>#}
+    {#                    <div class="panel-body  text-center">#}
+    {#                        用户名：<input type="text" name="uname">#}
+    {#                    </div>#}
+    {#                    <div class="panel-body  text-center">#}
+    {#                        密码：<input type="password" name="pwd">#}
+    {#                    </div>#}
+    {#                    <div class="panel-body  text-center">#}
+    {#                        性别：<input type="text" name="sex">#}
+    {#                    </div>#}
+    {#                    <div class="panel-body  text-center" enctype="multipart/form-data">#}
+    {#                        头像：<input type="file" name="header" class="navbar-right">#}
+    {#                    </div>#}
+    {#                    <div class="panel-body  text-center">#}
+    {#                        Email：<input type="text" name="email">#}
+    {#                    </div>#}
+    {#                    <div class="panel-body  text-center">#}
+    {#                        QQ：<input type="text" name="qq">#}
+    {#                    </div>#}
+    {#                    <div class="panel-body  text-center">#}
+    {#                        <button type="submit" id="myButton" class="btn btn-primary"#}
+    {#                                autocomplete="off">#}
+    {#                            注册#}
+    {#                        </button>#}
+    {#                    </div>#}
+    {#                </div>#}
+    {##}
+    {##}
+    {#            </form>#}
+    {#        </div>#}
+
+    <form action="/regist/" method="post" enctype="multipart/form-data">
+        <div class="jumbotron col-xs-2 center-block text-center">
+            <div class="form-group">
+                <label for="exampleInputEmail1">账号</label>
+                <input type="text" class="form-control" name="uid">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" name="pwd">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">用户名</label>
+                <input type="text" class="form-control" name="uname">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">性别</label>
+                <input type="text" class="form-control" name="sex">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">QQ</label>
+                <input type="text" class="form-control" name="qq">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Email</label>
+                <input type="email" class="form-control" name="email">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputFile">头像</label>
+                <input type="file" name="header" class="width ">
+            </div>
+            <button type="submit" id="myButton" class="btn btn-primary">注册</button>
+        </div>
+    </form>
+
+
+{% endblock %}
+
+
+
+{% block scripts %}
+    <script>
+        $('#myButton').on('click', function () {
+            var $btn = $(this).button('loading')
+            // business logic...
+            $btn.button('reset')
+        })
+    </script>
+{% endblock %}

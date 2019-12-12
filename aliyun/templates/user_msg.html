@@ -1,0 +1,29 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+
+{% block title %}
+    用户信息
+{% endblock %}
+
+
+{% block center %}
+    <div class="jumbotron text-center">
+        <div class="row  text-center">
+            <div class="text-center">
+                <div class="thumbnail">
+                    <img src="{% static user.u_header %}" alt="{{ user.u_name }}头像" width="200" height="300">
+                    <div class="caption">
+                        <h3>用户名:{{ user.u_name }}</h3>
+                        <p>QQ:{{ user.u_qq }}</p>
+                        <p>性别:{{ user.u_sex }}</p>
+                        <p>Email:{{ user.u_email }}</p>
+                        <p>注册时间：{{ user.create_time }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+

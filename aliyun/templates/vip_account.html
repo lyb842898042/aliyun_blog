@@ -1,0 +1,110 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+{% block title %}
+    VIP账号
+{% endblock %}
+{% block style %}
+    <style>
+        .center-block {
+            display: block;
+            margin-left: 30%;
+            margin-right: auto;
+        }
+        body {
+            background-image: url("{% static 'static/img/timg.jpg' %}");
+            background-size: 120%;
+        }
+    </style>
+{% endblock %}
+
+
+
+{% block center %}
+    <form action="/vipaccount/" method="post" enctype="multipart/form-data">
+        <div class=" jumbotron col-xs-6 center-block text-center">
+            <table class="table table-condensed">
+                <tr>
+                    <td class="active">
+                        网站
+                    </td>
+                    <td class="success">
+                        账号
+                    </td>
+                    <td class="warning">
+                        密码
+                    </td>
+                </tr>
+                {% for pot in posts %}
+                    <tr>
+                        <td class="active">{{ pot.web_name }}</td>
+                        <td class="success">{{ pot.v_user }}</td>
+                        <td class="warning">{{ pot.v_passwd }}</td>
+                    </tr>
+                {% endfor %}
+
+                <tr>
+                    <td class="active">
+                        <input type="text" name="name">
+                    </td>
+                    <td class="success">
+                        <input type="text" name="user">
+                    </td>
+                    <td class="warning">
+                        <input type="text" name="pwd">
+                    </td>
+                </tr>
+
+            </table>
+            <div>
+                <button type="submit" id="myButton" class="btn btn-primary">提交</button>
+            </div>
+            <tr>
+                <ul class="pagination">
+                    <li>
+                        {% if posts.has_previous %}{#判断是否存在上一页#}
+                            <a href="?page={{ posts.previous_page_number }}" aria-label="Previous">
+                                {#previous_page_number判断当前页#}
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        {% else %}
+{#                            <span aria-hidden="true">&laquo;</span>#}
+                        {% endif %}
+                    </li>
+                    {#总的页数#}
+                    {% for page_num in  posts.paginator.page_range %}
+                        {% if page_num == creat_page %}
+                            <li class="active"><a href="?page={{ page_num }}"><span>{{ page_num }}</span></a></li>
+                        {% else %}
+                            <li><a href="?page={{ page_num }}"><span>{{ page_num }}</span></a></li>
+                        {% endif %}
+
+                    {% endfor %}
+                    {#判断是否存在下一页#}
+                    <li>
+                        {% if posts.has_next %}
+                            <a href="?page={{ posts.next_page_number }}" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        {% else %}
+{#                            <span aria-hidden="true">&raquo;</span>#}
+                        {% endif %}
+                    </li>
+                </ul>
+            </tr>
+        </div>
+
+    </form>
+
+
+{% endblock %}
+
+
+{% block scripts %}
+    <script>
+        $('#myButton').on('click', function () {
+            var $btn = $(this).button('loading')
+            // business logic...
+            $btn.button('reset')
+        })
+    </script>
+{% endblock %}
